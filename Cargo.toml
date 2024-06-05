@@ -1,0 +1,19 @@
+[package]
+name = "rand_hash"
+version = "0.1.0-rc1"
+edition = "2021"
+
+[dependencies]
+digest = { version = "0.10", default-features = false }
+udigest = { git = "https://github.com/dfns/udigest", branch = "new-release", default-features = false, features = ["digest", "inline-struct"] }
+
+rand_core = { version = "0.6", default-features = false }
+
+[dev-dependencies]
+rand = "0.8"
+rand_dev = "0.1"
+
+sha2 = { version = "0.10", default-features = false }
+
+udigest = { git = "https://github.com/dfns/udigest", branch = "new-release", default-features = false, features = ["digest", "inline-struct", "derive"] }
+
