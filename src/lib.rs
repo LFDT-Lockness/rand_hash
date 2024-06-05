@@ -25,8 +25,6 @@
 //! Although we did not perform benchmarks, intuitively, `HashRng` is expected to be noticeably
 //! slower than other CSPRNG based on permutations (such as `ChaCha20Rng`)
 //!
-//! [chacha]:
-//!
 //! ## Example
 //! ```rust
 //! use rand::RngCore;
