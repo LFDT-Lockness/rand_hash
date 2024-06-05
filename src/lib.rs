@@ -102,14 +102,13 @@ impl<D: digest::Digest, S: udigest::Digestable> rand_core::RngCore for HashRng<D
 
         while dest_offset < dest.len() {
             // amount of bytes we copy from `buffer[offset..]` to `dest[dest_offset..]`
-            let read_bytes_from_buffer =
-                (self.buffer.len() - self.offset).min(dest.len() - dest_offset);
+            let len = (self.buffer.len() - self.offset).min(dest.len() - dest_offset);
 
-            dest[dest_offset..dest_offset + read_bytes_from_buffer]
-                .copy_from_slice(&self.buffer[self.offset..self.offset + read_bytes_from_buffer]);
+            dest[dest_offset..dest_offset + len]
+                .copy_from_slice(&self.buffer[self.offset..self.offset + len]);
 
-            self.offset += read_bytes_from_buffer;
-            dest_offset += read_bytes_from_buffer;
+            self.offset += len;
+            dest_offset += len;
 
             if self.offset == self.buffer.len() {
                 self.advance_buffer();
