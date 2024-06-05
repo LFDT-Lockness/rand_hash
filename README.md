@@ -1,4 +1,4 @@
-# Cryptographically-secure pseudo-random generator based on cryptographic hash function
+Cryptographically-secure pseudo-random generator based on cryptographic hash function
 
 `HashRng` is CSPRNG that takes any hashable data as seed and produces a stream
 of randomness that has the same entropy as the seed. It uses `udigest` crate to
