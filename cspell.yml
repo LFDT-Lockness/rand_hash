@@ -6,3 +6,4 @@ words:
 - PRNG
 - CSPRNG
 - hashable
+- chacha

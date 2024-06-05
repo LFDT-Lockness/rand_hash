@@ -5,9 +5,9 @@
 //! unambiguously hash the seed.
 //!
 //! ## Motivation
-//! Usually, CSPRNGs have a fixed-size seed. For instance, [`ChaCha20Rng`] has seed of
-//! 32 bytes. That means that when you want to derive randomness from data which has entropy
-//! exceeding 32 bytes, you'll have to truncate the seed to 32 bytes (e.g. by hashing it),
+//! Usually, CSPRNGs have a fixed-size seed. For instance, [`ChaCha20Rng`](https://docs.rs/rand_chacha/latest/rand_chacha/struct.ChaCha20Rng.html)
+//! has seed of 32 bytes. That means that when you want to derive randomness from data which
+//! has entropy exceeding 32 bytes, you'll have to truncate the seed to 32 bytes (e.g. by hashing it),
 //! so you won't be able to take advantage of exceeding entropy. This may influence security
 //! parameter and make it less secure than desired.
 //!
@@ -23,9 +23,9 @@
 //! 2<sup>64</sup> times `Digest::OutputSize` (size of hash output).
 //!
 //! Although we did not perform benchmarks, intuitively, `HashRng` is expected to be noticeably
-//! slower than other CSPRNG based on permutations (such as [`ChaCha20Rng`])
+//! slower than other CSPRNG based on permutations (such as `ChaCha20Rng`)
 //!
-//! [`ChaCha20Rng`]: https://docs.rs/rand_chacha/latest/rand_chacha/struct.ChaCha20Rng.html
+//! [chacha]:
 //!
 //! ## Example
 //! ```rust
