@@ -136,6 +136,54 @@ impl<D: digest::Digest, S: udigest::Digestable> From<S> for HashRng<D, S> {
     }
 }
 
+pub mod builder {
+    //! Alternative way to instantiate `HashRng`
+    //!
+    //! ## Example
+    //! ```rust
+    //! let rng = rand_hash::builder::with_seed("foobar")
+    //!     .with_digest::<sha2::Sha256>();
+    //! ```
+
+    /// Specifies a seed to use
+    pub fn with_seed<S>(seed: S) -> WithSeed<S> {
+        WithSeed { seed }
+    }
+
+    /// Specifies a digest to use
+    pub fn with_digest<D>() -> WithDigest<D> {
+        WithDigest(core::marker::PhantomData)
+    }
+
+    /// Builder that holds a seed
+    pub struct WithSeed<S> {
+        seed: S,
+    }
+    impl<S> WithSeed<S> {
+        /// Specifies a choice of digest and returns the instance of `HashRng`
+        pub fn with_digest<D>(self) -> super::HashRng<D, S>
+        where
+            D: digest::Digest,
+            S: udigest::Digestable,
+        {
+            super::HashRng::<D, S>::from_seed(self.seed)
+        }
+    }
+
+    /// Builder that holds a choice of digest
+    pub struct WithDigest<D>(core::marker::PhantomData<D>);
+    impl<D> WithDigest<D> {
+        /// Specifies a seed to use and returns the instance of `HashRng`
+        pub fn with_seed<S>(&self, seed: S) -> super::HashRng<D, S>
+        where
+            D: digest::Digest,
+            S: udigest::Digestable,
+        {
+            super::HashRng::<D, S>::from_seed(seed)
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use rand::{Rng, RngCore};
