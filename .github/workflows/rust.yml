@@ -43,6 +43,15 @@ jobs:
       with:
         cache-on-failure: "true"
     - name: Run clippy
+      run: cargo clippy --all-features -- -D clippy::all
+  check-clippy-tests:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - uses: Swatinem/rust-cache@v2
+      with:
+        cache-on-failure: "true"
+    - name: Run clippy
       run: cargo clippy --all-features --tests -- -D clippy::all
   check-changelog:
     runs-on: ubuntu-latest
