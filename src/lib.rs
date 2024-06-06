@@ -128,6 +128,8 @@ impl<D: digest::Digest, S: udigest::Digestable> rand_core::RngCore for HashRng<D
     }
 }
 
+impl<D: digest::Digest, S: udigest::Digestable> rand_core::CryptoRng for HashRng<D, S> {}
+
 impl<D: digest::Digest, S: udigest::Digestable> From<S> for HashRng<D, S> {
     fn from(seed: S) -> Self {
         Self::from_seed(seed)
