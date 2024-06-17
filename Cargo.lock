@@ -186,9 +186,9 @@ checksum = "42ff0bf0c66b8238c6f3b578df37d0b7848e55df8577b3f74f92a69acceeb825"
 
 [[package]]
 name = "udigest"
-version = "0.2.0-rc1"
+version = "0.2.0-rc2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "17a82a9dfcfded1cb1cca74e99193bd71f73c0d87fafb36a6883f2193d91a23e"
+checksum = "cb72201819e09f9e182640b3def05b3a614a51d6119e311f35a207f0814d196c"
 dependencies = [
  "digest",
  "udigest-derive",
