@@ -11,7 +11,7 @@ keywords = ["csprng", "random", "hash", "entropy"]
 
 [dependencies]
 digest = { version = "0.10", default-features = false }
-udigest = { version = "0.2.0-rc4", default-features = false, features = ["digest", "inline-struct"] }
+udigest = { version = "0.2", default-features = false, features = ["digest", "inline-struct"] }
 
 rand_core = { version = "0.6", default-features = false }
 
@@ -21,8 +21,5 @@ rand_dev = "0.1"
 
 sha2 = { version = "0.10", default-features = false }
 
-udigest = { version = "0.2.0-rc4", default-features = false, features = ["digest", "inline-struct", "derive"] }
+udigest = { version = "0.2", default-features = false, features = ["digest", "inline-struct", "derive"] }
 
-[patch.crates-io.udigest]
-git = "https://github.com/dfns/udigest"
-branch = "inline-struct-clone"
