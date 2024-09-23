@@ -3,7 +3,7 @@ name = "rand_hash"
 version = "0.1.0"
 edition = "2021"
 license = "Apache-2.0"
-repository = "https://github.com/dfns/rand_hash"
+repository = "https://github.com/LFDT-Lockness/rand_hash"
 description = "Cryptographically-secure pseudo-random generator based on cryptographic hash function"
 
 categories = ["cryptography", "no-std", "no-std::no-alloc"]
