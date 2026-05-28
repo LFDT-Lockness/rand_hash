@@ -2,6 +2,7 @@
 [![Docs](https://docs.rs/rand_hash/badge.svg)](https://docs.rs/rand_hash)
 [![Crates io](https://img.shields.io/crates/v/rand_hash.svg)](https://crates.io/crates/rand_hash)
 [![Discord](https://img.shields.io/discord/905194001349627914?logo=discord&logoColor=ffffff&label=Discord)][in Discord]
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/LFDT-Lockness/rand_hash/badge)](https://scorecard.dev/viewer/?uri=github.com/LFDT-Lockness/rand_hash)
 
 # Cryptographically-secure pseudo-random generator based on cryptographic hash function
 
