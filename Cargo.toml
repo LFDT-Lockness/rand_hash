@@ -13,7 +13,7 @@ keywords = ["csprng", "random", "hash", "entropy"]
 digest = { version = "0.10", default-features = false }
 udigest = { version = "0.2", default-features = false, features = ["digest", "inline-struct"] }
 
-rand_core = { version = "0.6", default-features = false }
+rand_core = { version = "0.10", default-features = false }
 
 [dev-dependencies]
 rand = "0.8"
