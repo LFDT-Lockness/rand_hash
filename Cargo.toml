@@ -10,7 +10,7 @@ categories = ["cryptography", "no-std", "no-std::no-alloc"]
 keywords = ["csprng", "random", "hash", "entropy"]
 
 [dependencies]
-digest = { version = "0.10", default-features = false }
+digest = { version = "0.11", default-features = false }
 udigest = { version = "0.2", default-features = false, features = ["digest", "inline-struct"] }
 
 rand_core = { version = "0.6", default-features = false }
