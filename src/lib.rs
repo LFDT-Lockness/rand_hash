@@ -45,8 +45,10 @@ impl<D: digest::Digest, S: udigest::Digestable> HashRng<D, S> {
     }
 }
 
-impl<D: digest::Digest, S: udigest::Digestable> rand_core::RngCore for HashRng<D, S> {
-    fn fill_bytes(&mut self, dest: &mut [u8]) {
+impl<D: digest::Digest, S: udigest::Digestable> rand_core::TryRng for HashRng<D, S> {
+    type Error = core::convert::Infallible;
+
+    fn try_fill_bytes(&mut self, dest: &mut [u8]) -> Result<(), Self::Error> {
         // amount of bytes already written to `dest`
         let mut dest_offset = 0;
 
@@ -64,17 +66,19 @@ impl<D: digest::Digest, S: udigest::Digestable> rand_core::RngCore for HashRng<D
                 self.advance_buffer();
             }
         }
+
+        Ok(())
     }
 
-    fn next_u32(&mut self) -> u32 {
-        rand_core::impls::next_u32_via_fill(self)
+    fn try_next_u32(&mut self) -> Result<u32, Self::Error> {
+        rand_core::utils::next_word_via_fill(self)
     }
-    fn next_u64(&mut self) -> u64 {
-        rand_core::impls::next_u64_via_fill(self)
+    fn try_next_u64(&mut self) -> Result<u64, Self::Error> {
+        rand_core::utils::next_word_via_fill(self)
     }
 }
 
-impl<D: digest::Digest, S: udigest::Digestable> rand_core::CryptoRng for HashRng<D, S> {}
+impl<D: digest::Digest, S: udigest::Digestable> rand_core::TryCryptoRng for HashRng<D, S> {}
 
 impl<D: digest::Digest, S: udigest::Digestable> From<S> for HashRng<D, S> {
     fn from(seed: S) -> Self {
@@ -132,7 +136,7 @@ pub mod builder {
 
 #[cfg(test)]
 mod tests {
-    use rand::{Rng, RngCore};
+    use rand::{Rng, RngExt};
 
     use crate::HashRng;
 
