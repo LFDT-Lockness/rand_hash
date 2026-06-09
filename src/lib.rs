@@ -66,10 +66,6 @@ impl<D: digest::Digest, S: udigest::Digestable> rand_core::RngCore for HashRng<D
         }
     }
 
-    fn try_fill_bytes(&mut self, dest: &mut [u8]) -> Result<(), rand_core::Error> {
-        self.fill_bytes(dest);
-        Ok(())
-    }
     fn next_u32(&mut self) -> u32 {
         rand_core::impls::next_u32_via_fill(self)
     }
@@ -162,7 +158,7 @@ mod tests {
         // strings.
 
         let mut rng = rand_dev::DevRng::new();
-        let seed: [u8; 32] = rng.gen();
+        let seed: [u8; 32] = rng.random();
 
         // Generate big random string
         let mut hash_rng = HashRng::<sha2::Sha256, _>::from_seed(seed);
@@ -176,7 +172,7 @@ mod tests {
         // Generate smaller random strings and concatenate them
         let mut concatenation = alloc::vec![];
         while concatenation.len() < big_string.len() {
-            let small_len = rng.gen_range(1..=100.min(big_string.len() - concatenation.len()));
+            let small_len = rng.random_range(1..=100.min(big_string.len() - concatenation.len()));
             let mut small_string = alloc::vec![0u8; small_len];
             hash_rng.fill_bytes(&mut small_string);
 

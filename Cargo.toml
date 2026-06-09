@@ -1,6 +1,6 @@
 [package]
 name = "rand_hash"
-version = "0.1.1"
+version = "0.2.0"
 edition = "2021"
 license = "Apache-2.0"
 repository = "https://github.com/LFDT-Lockness/rand_hash"
@@ -13,13 +13,12 @@ keywords = ["csprng", "random", "hash", "entropy"]
 digest = { version = "0.10", default-features = false }
 udigest = { version = "0.2", default-features = false, features = ["digest", "inline-struct"] }
 
-rand_core = { version = "0.6", default-features = false }
+rand_core = { version = "0.9", default-features = false }
 
 [dev-dependencies]
-rand = "0.8"
-rand_dev = "0.1"
+rand = "0.9"
+rand_dev = "0.2"
 
 sha2 = { version = "0.10", default-features = false }
 
 udigest = { version = "0.2", default-features = false, features = ["digest", "inline-struct", "derive"] }
-
