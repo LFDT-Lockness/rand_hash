@@ -319,7 +319,8 @@ checksum = "63b8176103e19a2643978565ca18b50549f6101881c443590420e4dc998a3c69"
 [[package]]
 name = "rand_dev"
 version = "0.3.0"
-source = "git+https://github.com/maurges/rand_dev?rev=ab06a8d3680d42e9a5637d1861ca996f42734410#ab06a8d3680d42e9a5637d1861ca996f42734410"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8ce0cb5cf648104d37cec5212da34e75d765417ad03d742d5721442bc69475dd"
 dependencies = [
  "const-hex",
  "getrandom",
@@ -329,7 +330,7 @@ dependencies = [
 
 [[package]]
 name = "rand_hash"
-version = "0.2.0"
+version = "0.3.0"
 dependencies = [
  "digest",
  "rand 0.10.1",
