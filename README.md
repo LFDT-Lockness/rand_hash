@@ -33,7 +33,7 @@ slower than other CSPRNG based on permutations (such as `ChaCha20Rng`)
 
 ## Example
 ```rust
-use rand::RngCore;
+use rand::Rng;
 
 #[derive(udigest::Digestable)]
 pub struct Seed<'a> {
